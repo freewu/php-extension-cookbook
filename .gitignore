@@ -1,0 +1,44 @@
+# ---- phpize / autotools generated files (per chapter) ----
+chapter*/Makefile
+chapter*/Makefile.fragments
+chapter*/Makefile.objects
+chapter*/Makefile.global
+chapter*/configure
+chapter*/configure.ac
+chapter*/config.h
+chapter*/config.h.in
+chapter*/config.log
+chapter*/config.status
+chapter*/config.nice
+chapter*/libtool
+chapter*/run-tests.php
+chapter*/acinclude.m4
+chapter*/build/
+chapter*/include/
+chapter*/modules/
+chapter*/autom4te.cache/
+chapter*/.libs/
+chapter*/*.dep
+chapter*/*.la
+chapter*/*.lo
+
+# ---- compiled objects / libraries ----
+*.o
+*.so
+*.lo
+*.la
+.libs/
+
+# ---- test artifacts produced by run-tests.php ----
+chapter*/tests/*.diff
+chapter*/tests/*.out
+chapter*/tests/*.exp
+chapter*/tests/*.log
+chapter*/tests/*.php
+chapter*/tests/*.sh
+chapter*/tests/*.mem
+
+# ---- misc ----
+autom4te.cache/
+*.tgz
+.DS_Store
