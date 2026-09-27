@@ -1,5 +1,12 @@
 # php-extension-cookbook
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Zend Engine](https://img.shields.io/badge/Zend%20Engine-C-A8B9CC?logo=c&logoColor=white)](https://github.com/php/php-src)
+[![phpize](https://img.shields.io/badge/build-phpize%20%2B%20make-success)](https://www.php.net/manual/zh/internals2.buildsys.php)
+![Platform](https://img.shields.io/badge/platform-Linux-FCC624?logo=linux&logoColor=black)
+![Tests](https://img.shields.io/badge/tests-24%20passed-brightgreen)
+
 基于 PHP 8 的扩展开发教程。
 
 从零开始，用 8 个循序渐进的章节，覆盖 PHP 扩展开发的核心知识点：
@@ -100,4 +107,6 @@ extension=chapter1.so
 
 ## License
 
-[Apache License 2.0](LICENSE)
+本项目基于 [MIT License](LICENSE) 开源。
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
