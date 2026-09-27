@@ -33,14 +33,14 @@ chapter1/
 
 ## 关键知识点
 
-| 概念 | 说明 |
-| --- | --- |
-| `PHP_FUNCTION(name)` | 声明用户空间可调用的函数 |
+| 概念                      | 说明                                 |
+| ------------------------ | ------------------------------------ |
+| `PHP_FUNCTION(name)`     | 声明用户空间可调用的函数                 |
 | `ZEND_BEGIN_ARG_INFO_EX` | PHP 8 必需，描述函数签名（反射/类型检查） |
-| `zend_function_entry` | 函数表，把函数名和 C 实现绑定 |
-| `zend_module_entry` | 模块入口，定义生命周期回调与版本 |
-| `PHP_MINFO_FUNCTION` | `phpinfo()` 输出的模块信息 |
-| `ZEND_GET_MODULE` | 动态库方式加载的入口 |
+| `zend_function_entry`    | 函数表，把函数名和 C 实现绑定            |
+| `zend_module_entry`      | 模块入口，定义生命周期回调与版本          |
+| `PHP_MINFO_FUNCTION`     | `phpinfo()` 输出的模块信息             |
+| `ZEND_GET_MODULE`        | 动态库方式加载的入口                    |
 
 ## 编译与运行
 

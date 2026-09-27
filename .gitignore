@@ -42,3 +42,6 @@ chapter*/tests/*.mem
 autom4te.cache/
 *.tgz
 .DS_Store
+/chapter1/config.h.in~
+/chapter1/configure~
+/chapter1/*.txt
