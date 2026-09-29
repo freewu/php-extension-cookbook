@@ -7,7 +7,9 @@
 
 每一章都是一个**可以独立编译、可以 `make test`** 的完整扩展。
 
-[开始阅读](#/)
+<!-- 封面页路由本身就是 #/，再点 #/ 不会跳转；
+     用首页 H1 的锚点 (id=php-extension-cookbook) 才会真正进入正文 -->
+[开始阅读](#/?id=php-extension-cookbook)
 [GitHub](https://github.com/freewu/php-extension-cookbook)
 
 ![color](#42b983)
