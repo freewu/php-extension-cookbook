@@ -83,16 +83,11 @@ php -d extension=$(pwd)/modules/chapter1.so --ri chapter1
 ```bash
 make test
 ```
-## 完整代码（chapter1.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter1.c`](chapter1.c) 为准。
-
+<!-- 本章代码 begin:chapter1 -->
 
 ## 完整代码（chapter1.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter1.c`](chapter1.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter1.c（共 97 行）</summary>
@@ -198,8 +193,7 @@ ZEND_GET_MODULE(chapter1)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter1 -->
 
 <a id="chapter-2"></a>
 # Chapter 2 - 扩展配置（INI）
@@ -289,16 +283,11 @@ php -d extension=$(pwd)/modules/chapter2.so demo.php
 php -d extension=$(pwd)/modules/chapter2.so -d chapter2.limit=1 demo.php
 make test
 ```
-## 完整代码（chapter2.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter2.c`](chapter2.c) 为准。
-
+<!-- 本章代码 begin:chapter2 -->
 
 ## 完整代码（chapter2.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter2.c`](chapter2.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter2.c（共 216 行）</summary>
@@ -523,8 +512,7 @@ ZEND_GET_MODULE(chapter2)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter2 -->
 
 <a id="chapter-3"></a>
 # Chapter 3 - 函数参数与返回值
@@ -609,16 +597,11 @@ phpize && ./configure --enable-chapter3 && make
 php -d extension=$(pwd)/modules/chapter3.so demo.php
 make test
 ```
-## 完整代码（chapter3.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter3.c`](chapter3.c) 为准。
-
+<!-- 本章代码 begin:chapter3 -->
 
 ## 完整代码（chapter3.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter3.c`](chapter3.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter3.c（共 171 行）</summary>
@@ -798,8 +781,7 @@ ZEND_GET_MODULE(chapter3)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter3 -->
 
 <a id="chapter-4"></a>
 # Chapter 4 - 数组参数与数组返回值
@@ -890,16 +872,11 @@ phpize && ./configure --enable-chapter4 && make
 php -d extension=$(pwd)/modules/chapter4.so demo.php
 make test
 ```
-## 完整代码（chapter4.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter4.c`](chapter4.c) 为准。
-
+<!-- 本章代码 begin:chapter4 -->
 
 ## 完整代码（chapter4.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter4.c`](chapter4.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter4.c（共 182 行）</summary>
@@ -1090,8 +1067,7 @@ ZEND_GET_MODULE(chapter4)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter4 -->
 
 <a id="chapter-5"></a>
 # Chapter 5 - 带默认值的函数
@@ -1166,16 +1142,11 @@ phpize && ./configure --enable-chapter5 && make
 php -d extension=$(pwd)/modules/chapter5.so demo.php
 make test
 ```
-## 完整代码（chapter5.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter5.c`](chapter5.c) 为准。
-
+<!-- 本章代码 begin:chapter5 -->
 
 ## 完整代码（chapter5.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter5.c`](chapter5.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter5.c（共 204 行）</summary>
@@ -1388,8 +1359,7 @@ ZEND_GET_MODULE(chapter5)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter5 -->
 
 <a id="chapter-6"></a>
 # Chapter 6 - 无固定参数（可变参数）函数
@@ -1458,16 +1428,11 @@ phpize && ./configure --enable-chapter6 && make
 php -d extension=$(pwd)/modules/chapter6.so demo.php
 make test
 ```
-## 完整代码（chapter6.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter6.c`](chapter6.c) 为准。
-
+<!-- 本章代码 begin:chapter6 -->
 
 ## 完整代码（chapter6.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter6.c`](chapter6.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter6.c（共 197 行）</summary>
@@ -1673,8 +1638,7 @@ ZEND_GET_MODULE(chapter6)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter6 -->
 
 <a id="chapter-7"></a>
 # Chapter 7 - 实现类（Class）
@@ -1792,16 +1756,11 @@ phpize && ./configure --enable-chapter7 && make
 php -d extension=$(pwd)/modules/chapter7.so demo.php
 make test
 ```
-## 完整代码（chapter7.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter7.c`](chapter7.c) 为准。
-
+<!-- 本章代码 begin:chapter7 -->
 
 ## 完整代码（chapter7.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter7.c`](chapter7.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter7.c（共 306 行）</summary>
@@ -2116,8 +2075,7 @@ ZEND_GET_MODULE(chapter7)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter7 -->
 
 <a id="chapter-8"></a>
 # Chapter 8 - 资源（Resource）
@@ -2217,16 +2175,11 @@ phpize && ./configure --enable-chapter8 && make
 php -d extension=$(pwd)/modules/chapter8.so demo.php
 make test
 ```
-## 完整代码（chapter8.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter8.c`](chapter8.c) 为准。
-
+<!-- 本章代码 begin:chapter8 -->
 
 ## 完整代码（chapter8.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter8.c`](chapter8.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter8.c（共 264 行）</summary>
@@ -2499,8 +2452,7 @@ ZEND_GET_MODULE(chapter8)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter8 -->
 
 <a id="chapter-9"></a>
 # Chapter 9 - 敏感词检测（DFA）
@@ -2674,16 +2626,11 @@ preg_match_all  1 MiB 切片 + 1000 词基线：403 ms（约 15 倍）
 - 支持词库热更新：`chapter9_build` 或 `chapter9_load` 后无需重启即可生效（已实现：load 会替换旧字典）；
 - 把示例里“最长命中”改成“所有命中”（输出链接 out[] 沿 fail 链多跳即可）；
 - 增加 `chapter9_detect` 返回命中位置（把 `c9_hit` 的 start/end 返回给 PHP）。
-## 完整代码（chapter9.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter9.c`](chapter9.c) 为准。
-
+<!-- 本章代码 begin:chapter9 -->
 
 ## 完整代码（chapter9.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter9.c`](chapter9.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter9.c（共 1007 行）</summary>
@@ -3699,6 +3646,5 @@ ZEND_GET_MODULE(chapter9)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter9 -->
 

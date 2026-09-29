@@ -80,16 +80,11 @@ phpize && ./configure --enable-chapter3 && make
 php -d extension=$(pwd)/modules/chapter3.so demo.php
 make test
 ```
-## 完整代码（chapter3.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter3.c`](chapter3.c) 为准。
-
+<!-- 本章代码 begin:chapter3 -->
 
 ## 完整代码（chapter3.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter3.c`](chapter3.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter3.c（共 171 行）</summary>
@@ -269,5 +264,4 @@ ZEND_GET_MODULE(chapter3)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter3 -->

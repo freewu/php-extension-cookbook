@@ -95,16 +95,11 @@ phpize && ./configure --enable-chapter8 && make
 php -d extension=$(pwd)/modules/chapter8.so demo.php
 make test
 ```
-## 完整代码（chapter8.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter8.c`](chapter8.c) 为准。
-
+<!-- 本章代码 begin:chapter8 -->
 
 ## 完整代码（chapter8.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter8.c`](chapter8.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter8.c（共 264 行）</summary>
@@ -377,5 +372,4 @@ ZEND_GET_MODULE(chapter8)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter8 -->

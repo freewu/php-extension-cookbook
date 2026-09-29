@@ -169,16 +169,11 @@ preg_match_all  1 MiB 切片 + 1000 词基线：403 ms（约 15 倍）
 - 支持词库热更新：`chapter9_build` 或 `chapter9_load` 后无需重启即可生效（已实现：load 会替换旧字典）；
 - 把示例里“最长命中”改成“所有命中”（输出链接 out[] 沿 fail 链多跳即可）；
 - 增加 `chapter9_detect` 返回命中位置（把 `c9_hit` 的 start/end 返回给 PHP）。
-## 完整代码（chapter9.c）
-
-> 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter9.c`](chapter9.c) 为准。
-
+<!-- 本章代码 begin:chapter9 -->
 
 ## 完整代码（chapter9.c）
 
 > 本章扩展的完整 C 源码，已带中文注释。由 [`scripts/sync-code-readme.sh`](../scripts/sync-code-readme.sh) 自动同步；以源码文件 [`chapter9.c`](chapter9.c) 为准。
-
-<!-- 本章代码 begin -->
 
 <details>
 <summary>展开 / 收起 chapter9.c（共 1007 行）</summary>
@@ -1194,5 +1189,4 @@ ZEND_GET_MODULE(chapter9)
 
 </details>
 
-<!-- 本章代码 end -->
-
+<!-- 本章代码 end:chapter9 -->
