@@ -101,6 +101,29 @@ php -d extension=$(pwd)/modules/chapter1.so demo.php
 extension=chapter1.so
 ```
 
+## 文档与电子书
+
+项目内置 [docsify](https://docsify.js.org/) 支持：仓库根目录的 `index.html`
+就是文档入口，任意静态服务器都可以直接打开为在线手册。
+
+```bash
+# 方式一：只要 Python 就能跑
+python3 -m http.server 8000
+# 打开 http://localhost:8000
+
+# 方式二：用 docsify CLI
+npx docsify-cli serve .
+```
+
+- `_sidebar.md`：侧边栏导航，由 `scripts/gen-docs.sh` 自动生成
+  （按章节排序，标题取自各章 README）
+- `ebook.md`：**单文件电子书**（全章节 + 目录锚点），同样由脚本生成
+- `scripts/build-ebook.sh`：用 [pandoc](https://pandoc.org/) 把
+  `ebook.md` 转成 `php-extension-cookbook.epub`（`bash scripts/build-ebook.sh`），
+  直接导入微信读书 / Calibre / Kindle；`pdf` 亦可（需 LaTeX）
+
+> 重新生成导航：`bash scripts/gen-docs.sh`（新增章节后执行一次即可）
+
 ## 参考
 
 - [PHP 官方文档 - 扩展开发](https://www.php.net/manual/zh/internals2.php)

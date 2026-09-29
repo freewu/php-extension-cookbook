@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP 扩展开发手册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐘</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app">加载中…</div>
+  <script>
+    window.$docsify = {
+      name: 'PHP 扩展开发手册',
+      repo: 'freewu/php-extension-cookbook',
+      // 结构
+      loadSidebar: true,
+      subMaxLevel: 4,
+      maxLevel: 4,
+      coverpage: true,
+      auto2top: true,
+      // 搜索插件
+      search: {
+        placeholder: '搜索',
+        noData: '没有找到结果',
+        depth: 6
+      },
+      // 显示最近更新时间
+      formatUpdated: '{YYYY}-{MM}-{DD}',
+      executeScript: true
+    }
+  </script>
+  <!-- docsify 及插件（CDN 加载，离线环境请自行下载到本地） -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/copy-code.min.js"></script>
+</body>
+</html>
