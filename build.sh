@@ -13,7 +13,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 JOBS="${JOBS:-$(nproc 2>/dev/null || echo 2)}"
-ALL_CHAPTERS=(chapter1 chapter2 chapter3 chapter4 chapter5 chapter6 chapter7 chapter8)
+ALL_CHAPTERS=(chapter1 chapter2 chapter3 chapter4 chapter5 chapter6 chapter7 chapter8 chapter9)
 
 ACTION="all"
 TARGETS=()
@@ -21,7 +21,7 @@ TARGETS=()
 for arg in "$@"; do
     case "$arg" in
         build|test|all|clean) ACTION="$arg" ;;
-        chapter[1-8])         TARGETS+=("$arg") ;;
+        chapter[1-9])         TARGETS+=("$arg") ;;
         *) echo "未知参数: $arg" >&2; exit 1 ;;
     esac
 done

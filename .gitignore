@@ -45,3 +45,5 @@ autom4te.cache/
 /chapter1/config.h.in~
 /chapter1/configure~
 /chapter1/*.txt
+*~
+chapter9/words.bin

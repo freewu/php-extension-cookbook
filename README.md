@@ -5,12 +5,12 @@
 [![Zend Engine](https://img.shields.io/badge/Zend%20Engine-C-A8B9CC?logo=c&logoColor=white)](https://github.com/php/php-src)
 [![phpize](https://img.shields.io/badge/build-phpize%20%2B%20make-success)](https://www.php.net/manual/zh/internals2.buildsys.php)
 ![Platform](https://img.shields.io/badge/platform-Linux-FCC624?logo=linux&logoColor=black)
-![Tests](https://img.shields.io/badge/tests-24%20passed-brightgreen)
+![Tests](https://img.shields.io/badge/tests-28%20passed-brightgreen)
 
 基于 PHP 8 的扩展开发教程。
 
-从零开始，用 8 个循序渐进的章节，覆盖 PHP 扩展开发的核心知识点：
-环境搭建、函数、参数与返回值、数组、默认参数、可变参数、类、资源。
+从零开始，用 9 个循序渐进的章节，覆盖 PHP 扩展开发的核心知识点：
+环境搭建、函数、参数与返回值、数组、默认参数、可变参数、类、资源、数据结构（DFA 敏感词检测）。
 
 ## Plan
 
@@ -24,6 +24,7 @@
 | [chapter6](chapter6/) | 可变参数 | 无固定参数函数 `...$args`，具名参数 |
 | [chapter7](chapter7/) | 类 | 自定义对象结构体、方法、属性、类常量 |
 | [chapter8](chapter8/) | 资源 | 注册资源类型、创建 / 取回 / 析构资源 |
+| [chapter9](chapter9/) | DFA 敏感词检测 | Trie + Aho-Corasick，txt 构建 .bin 词典，命中检测与替换 |
 
 每个章节都是一个**独立可编译的扩展**，包含：
 
