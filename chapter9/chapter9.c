@@ -311,6 +311,7 @@ static zend_bool c9_serialize(c9_builder *b, php_stream *out)
     uint32_t ec = 0;
     for (uint32_t i = 0; i < nc; i++) ec += b->nodes[i].edge_count;
 
+    /* 展平边表：每个节点的子边按 ch 排序后连续存放 */
     c9_edge *flat = emalloc(sizeof(c9_edge) * (ec ? ec : 1));
     uint32_t off = 0;
     for (uint32_t i = 0; i < nc; i++) {
@@ -325,39 +326,46 @@ static zend_bool c9_serialize(c9_builder *b, php_stream *out)
         off += n->edge_count;
     }
 
-    zend_bool ok = FAILURE;
-    unsigned char h[24];
-    h[0] = C9_MAGIC0; h[1] = C9_MAGIC1; h[2] = C9_MAGIC2; h[3] = C9_MAGIC3;
-    c9_w32(h + 4,  C9_VERSION);
-    c9_w32(h + 8,  nc);
-    c9_w32(h + 12, ec);
-    c9_w32(h + 16, b->pool_len);
-    c9_w32(h + 20, 0);
-    if (php_stream_write(out, h, 24) != 24) goto done;
+    /* 在内存里拼好整个 .bin，再一次性写入，
+     * 避免按节点 / 按边逐个小块 php_stream_write（每次都是系统调用）。 */
+    size_t total = 24 + (size_t)nc * 20 + (size_t)ec * 8 + b->pool_len;
+    unsigned char *buf = emalloc(total ? total : 1);
+    unsigned char *p   = buf;
 
-    unsigned char nb[20];
+    p[0] = C9_MAGIC0; p[1] = C9_MAGIC1; p[2] = C9_MAGIC2; p[3] = C9_MAGIC3;
+    c9_w32(p + 4,  C9_VERSION);
+    c9_w32(p + 8,  nc);
+    c9_w32(p + 12, ec);
+    c9_w32(p + 16, b->pool_len);
+    c9_w32(p + 20, 0);
+    p += 24;
+
     for (uint32_t i = 0; i < nc; i++) {
         c9_bnode *n = &b->nodes[i];
-        c9_w32(nb,      n->is_end);
-        c9_w32(nb + 4,  n->word_index);
-        c9_w32(nb + 8,  n->word_cp_len);
-        c9_w32(nb + 12, n->edge_off);
-        c9_w32(nb + 16, n->edge_count);
-        if (php_stream_write(out, nb, 20) != 20) goto done;
+        c9_w32(p,      n->is_end);
+        c9_w32(p + 4,  n->word_index);
+        c9_w32(p + 8,  n->word_cp_len);
+        c9_w32(p + 12, n->edge_off);
+        c9_w32(p + 16, n->edge_count);
+        p += 20;
     }
 
-    unsigned char eb[8];
     for (uint32_t i = 0; i < ec; i++) {
-        c9_w32(eb,     flat[i].ch);
-        c9_w32(eb + 4, flat[i].target);
-        if (php_stream_write(out, eb, 8) != 8) goto done;
+        c9_w32(p,     flat[i].ch);
+        c9_w32(p + 4, flat[i].target);
+        p += 8;
     }
 
-    if (b->pool_len && php_stream_write(out, b->pool, b->pool_len) != b->pool_len) goto done;
-    ok = SUCCESS;
+    if (b->pool_len) {
+        memcpy(p, b->pool, b->pool_len);
+        p += b->pool_len;
+    }
 
-done:
+    zend_bool ok = (php_stream_write(out, buf, total) == (ssize_t) total)
+                 ? SUCCESS : FAILURE;
+
     efree(flat);
+    efree(buf);
     return ok;
 }
 
@@ -833,22 +841,23 @@ PHP_FUNCTION(chapter9_detect)
         return;
     }
 
-    /* 去重，保持首次命中顺序 */
-    uint32_t *seen = emalloc(sizeof(uint32_t) * scnt);
-    size_t seen_n = 0;
+    /* 去重，保持首次命中顺序。
+     * 命中词可能非常多（大文本 + 大词典），用线性表会退化成 O(n^2)，
+     * 这里用 HashTable 做 O(1) 判重。 */
+    HashTable seen;
+    zend_hash_init(&seen, scnt, NULL, NULL, 0);
+    zval marker;
+    ZVAL_TRUE(&marker);
     for (size_t i = 0; i < scnt; i++) {
-        uint32_t woff = hits[i].word_off;
-        zend_bool dup = 0;
-        for (size_t j = 0; j < seen_n; j++) {
-            if (seen[j] == woff) { dup = 1; break; }
-        }
-        if (!dup) {
-            const char *w = C9_TRIE_POOL(t) + woff;
-            seen[seen_n++] = woff;
-            add_next_index_stringl(return_value, w, strlen(w));
+        const char *w = C9_TRIE_POOL(t) + hits[i].word_off;
+        size_t wlen = strlen(w);
+        /* zend_hash_str_add 的 pData 不能为 NULL（内部会解引用），
+         * 传入一个真实 zval 即可；键已存在时返回 NULL，达到判重效果 */
+        if (zend_hash_str_add(&seen, w, wlen, &marker) != NULL) {
+            add_next_index_stringl(return_value, w, wlen);
         }
     }
-    efree(seen);
+    zend_hash_destroy(&seen);
     efree(hits);
 }
 

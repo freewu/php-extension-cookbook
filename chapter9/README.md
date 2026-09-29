@@ -122,6 +122,48 @@ php -d extension=$(pwd)/modules/chapter9.so demo.php
 make test
 ```
 
+## 性能测试
+
+```bash
+php -d extension=$(pwd)/modules/chapter9.so bench.php
+php -d extension=$(pwd)/modules/chapter9.so bench.php --words=200000 --text-mb=40
+```
+
+脚本会生成“大词典 + 大文本”，测量构建 / 加载 / 扫描的耗时与吞吐，
+并和 PCRE 正则过滤做基线对比。常用参数：
+
+| 参数 | 默认 | 说明 |
+| --- | --- | --- |
+| `--words=N` | 50000 | 词典词数 |
+| `--text-mb=N` | 10 | 测试文本大小 (MiB) |
+| `--runs=N` | 3 | 每操作重复次数，取最优 |
+| `--re-words=N` | 1000 | PCRE 基线词数 |
+| `--re-mb=N` | 1 | PCRE 基线切片 (MiB) |
+| `--skip-re` | - | 跳过 PCRE 基线 |
+
+参考结果（PHP 8.3.6，5 万词词典 / 10 MiB 文本，Virt 机器）：
+
+```text
+chapter9_build        170 ms   （bin 3.85 MiB）
+chapter9_load          51 ms
+chapter9_detect       344 ms   29 MiB/s（命中 39010 个不同词）
+chapter9_replace      598 ms   17 MiB/s
+chapter9_has          273 ms   37 MiB/s
+preg_match_all  1 MiB 切片 + 1000 词基线：403 ms（约 15 倍）
+```
+
+> 说明：PCRE 基线只用了 1000 个词，词典越大正则的差距越大——
+> DFA 的扫描耗时只与文本长度相关，与词典大小无关。
+
+### 本章两处性能细节
+
+1. **序列化合并写**：把 `.bin` 先在内存拼好、一次 `php_stream_write`，
+   而不是按节点 / 按边逐个小块写入（每次都是系统调用）。
+   5 万词构建从约 4 s 降到约 170 ms。
+2. **detect 去重用 HashTable**：命中词非常多时，用“数组 + 线性查找”
+   去重会退化成 O(n²)，换成 `zend_hash_str_add` 判重后
+   detect 从约 970 ms 降到约 344 ms。
+
 ## 扩展练习
 
 - 支持词库热更新：`chapter9_build` 或 `chapter9_load` 后无需重启即可生效（已实现：load 会替换旧字典）；
