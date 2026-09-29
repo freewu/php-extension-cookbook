@@ -1,0 +1,70 @@
+# 把仓库根目录（docsify 站点）发布到 GitHub Pages，
+# 并顺带构建 epub 电子书作为 Actions 制品。
+#
+# 开启方式（二选一）：
+#   1. 推送本文件到 main 后，每次 push 自动部署（推荐）；
+#   2. Settings → Pages → Source: Deploy from a branch → main / (root)。
+# 发布地址：https://<username>.github.io/php-extension-cookbook/
+
+name: Deploy docsify to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # ---- 站点发布：docsify 是纯前端，仓库根目录即站点 ----
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site（仓库根目录）
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # ---- 电子书制品：pandoc 生成 epub（可选）----
+  ebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq pandoc
+
+      - name: 生成导航与电子书
+        run: |
+          bash scripts/sync-code-readme.sh
+          bash scripts/gen-docs.sh
+          bash scripts/build-ebook.sh
+
+      - name: 上传 epub
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-extension-cookbook-epub
+          path: php-extension-cookbook.epub

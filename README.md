@@ -124,6 +124,36 @@ npx docsify-cli serve .
 
 > 重新生成导航：`bash scripts/gen-docs.sh`（新增章节后执行一次即可）
 
+### 部署到 GitHub Pages
+
+仓库已内置 Pages 发布所需的一切：
+
+- `.nojekyll`：关闭 Jekyll，避免 `_sidebar.md` 等下划线文件被忽略
+- `.github/workflows/pages.yml`：push 到 `main` 后自动把**仓库根目录**
+  （即 docsify 站点）发布到 Pages，并顺带构建 `epub` 电子书制品
+
+开启方式（二选一）：
+
+```text
+1. 自动：推送 pages.yml 到 main 后，每次 push 自动部署（推荐）
+2. 手动：Settings → Pages → Source: Deploy from a branch → main / (root)
+```
+
+发布后访问：
+
+```text
+https://<username>.github.io/php-extension-cookbook/
+```
+
+### 每章附完整代码
+
+每个 `chapterN/README.md` 末尾都有 `<details>` 折叠块，内含该章扩展的
+**完整 C 源码（带中文注释）**，可直接在 GitHub / docsify / 电子书中阅读：
+
+```bash
+bash scripts/sync-code-readme.sh   # 改过 .c 后重新同步一次，幂等
+```
+
 ## 参考
 
 - [PHP 官方文档 - 扩展开发](https://www.php.net/manual/zh/internals2.php)
