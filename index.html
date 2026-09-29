@@ -6,6 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐘</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style>
+    /* ---- 封面：没有背景图时，保证标题 / 按钮 / 文字清晰可见 ---- */
+    .cover {
+      background:
+        radial-gradient(1100px 550px at 15% 8%, rgba(255,255,255,.12), transparent),
+        linear-gradient(135deg, #155c40 0%, #2b8f5f 55%, #42b983 100%) !important;
+      color: #fff !important;
+    }
+    .cover-main h1 {
+      color: #fff !important;
+      text-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+    .cover-main p,
+    .cover-main blockquote {
+      color: rgba(255,255,255,.95) !important;
+    }
+    .cover-main blockquote {
+      border-left: 4px solid rgba(255,255,255,.65);
+    }
+    /* “开始阅读 / GitHub”按钮：白色描边胶囊，悬停反色 */
+    .cover-main a.cover-btn,
+    .cover-main > p > a {
+      display: inline-block;
+      margin: .5em .35em;
+      padding: .55em 1.5em;
+      border: 2px solid #fff !important;
+      border-radius: 24px;
+      background: rgba(255,255,255,.15) !important;
+      color: #fff !important;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .cover-main a.cover-btn:hover,
+    .cover-main > p > a:hover {
+      background: #fff !important;
+      color: #155c40 !important;
+    }
+  </style>
 </head>
 <body>
   <div id="app">加载中…</div>
