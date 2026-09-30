@@ -34,6 +34,7 @@ case "$FMT" in
         pandoc ebook.md -o "$OUT" \
             --metadata title="PHP 扩展开发手册" \
             --metadata lang=zh-CN \
+            --epub-cover-image=images/book_cover.png \
             --toc --toc-depth=2
         ;;
     pdf)

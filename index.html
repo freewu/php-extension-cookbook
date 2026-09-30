@@ -43,6 +43,13 @@
       background: #fff !important;
       color: #155c40 !important;
     }
+    /* 封面页展示的书封面缩略图 images/book_cover.png */
+    .cover-main img {
+      width: 190px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      margin: .8em 0;
+    }
   </style>
 </head>
 <body>
@@ -145,7 +152,10 @@
      */
     document.addEventListener('click', function (e) {
       var a = e.target && e.target.closest ? e.target.closest('a') : e.target;
-      if (a && a.getAttribute && a.getAttribute('href') === '#/?id=php-extension-cookbook') {
+      // 源码 markdown 写 (?id=…) 即可，docsify 编译后 DOM href 为 #/?id=…；
+      // 这里用后缀匹配，两种写法都能命中
+      var href = a && a.getAttribute ? a.getAttribute('href') : '';
+      if (href.indexOf('?id=php-extension-cookbook') !== -1) {
         setTimeout(function () {
           var cover = document.querySelector('.cover');
           if (cover) cover.style.display = 'none';
