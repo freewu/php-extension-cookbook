@@ -1,4 +1,4 @@
-# php-extension-cookbook
+# PHP8 Extension Cookbook
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
@@ -7,7 +7,7 @@
 ![Platform](https://img.shields.io/badge/platform-Linux-FCC624?logo=linux&logoColor=black)
 ![Tests](https://img.shields.io/badge/tests-28%20passed-brightgreen)
 
-基于 PHP 8 的扩展开发教程。
+基于 PHP 8 的扩展开发教程
 
 从零开始，用 9 个循序渐进的章节，覆盖 PHP 扩展开发的核心知识点：
 环境搭建、函数、参数与返回值、数组、默认参数、可变参数、类、资源、数据结构（DFA 敏感词检测）。

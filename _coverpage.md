@@ -9,7 +9,7 @@
 
 <!-- 封面页路由本身就是 #/，再点 #/ 不会跳转；
      用首页 H1 的锚点 (id=php-extension-cookbook) 才会真正进入正文 -->
-[开始阅读](?id=php-extension-cookbook)
+[开始阅读](?id=plan)
 [GitHub](https://github.com/freewu/php-extension-cookbook)
 
 ![封面](images/book_cover.png)
